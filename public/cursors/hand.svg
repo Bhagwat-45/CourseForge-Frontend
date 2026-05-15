@@ -1,0 +1,21 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fillGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5EE5FF"/>
+      <stop offset="1" stop-color="#B83AF3"/>
+    </linearGradient>
+    <linearGradient id="shadowGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF3A60"/>
+      <stop offset="1" stop-color="#FFB320"/>
+    </linearGradient>
+  </defs>
+
+  <g stroke-linejoin="round" stroke="#22003B" stroke-width="2.5" transform="rotate(-15 16 16)">
+    <!-- Shadow offset -->
+    <path d="M13,6 L13,12 L9,12 L9,19 L13,23 L25,23 L25,12 L21,12 L21,9 L17,9 L17,6 Z" fill="url(#shadowGrad)" transform="translate(-2, 3)"/>
+    <!-- Main hand -->
+    <path d="M13,3 L13,9 L9,9 L9,16 L13,20 L25,20 L25,9 L21,9 L21,6 L17,6 L17,3 Z" fill="url(#fillGrad)"/>
+    <!-- Highlight -->
+    <path d="M14.5,4.5 L14.5,9.5 L10.5,9.5 L10.5,15 L13.5,18 L23.5,18 L23.5,10.5 L19.5,10.5 L19.5,7.5 L15.5,7.5 L15.5,4.5 Z" fill="#FFFFFF" fill-opacity="0.3" stroke="none"/>
+  </g>
+</svg>

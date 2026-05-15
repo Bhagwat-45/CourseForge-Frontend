@@ -1,0 +1,21 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fillGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5EE5FF"/>
+      <stop offset="1" stop-color="#B83AF3"/>
+    </linearGradient>
+    <linearGradient id="shadowGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF3A60"/>
+      <stop offset="1" stop-color="#FFB320"/>
+    </linearGradient>
+  </defs>
+  
+  <g stroke-linejoin="round" stroke="#22003B" stroke-width="2.5">
+    <!-- Shadow offset: left and down -->
+    <path d="M 5 8 L 5 26 L 10.5 21 L 14.5 29 L 18 27 L 14 19 L 21 19 Z" fill="url(#shadowGrad)"/>
+    <!-- Main cursor -->
+    <path d="M 7 4 L 7 22 L 12.5 17 L 16.5 25 L 20 23 L 16 15 L 23 15 Z" fill="url(#fillGrad)"/>
+    <!-- Highlight -->
+    <path d="M 8.5 7 L 8.5 18 L 12 15 L 14 19 L 15 18 L 13 14 L 17 14 Z" fill="#FFFFFF" fill-opacity="0.3" stroke="none"/>
+  </g>
+</svg>

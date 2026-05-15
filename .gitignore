@@ -1,0 +1,93 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+# lib/  <-- Removed broad ignore to allow src/lib
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment variables - NEVER commit
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Uploads
+uploads/
+server/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Misc
+nul
+
+# MongoDB
+*.db
+
+# CourseForge specific
+backend/app/chroma_data/
+backend/logs/
+backend/startup_log.txt
+backend/backend_output.log
+*.txt
+!COLLABORATION.md
+!CONTRIBUTING.md
+!PROJECT_COMPREHENSIVE_REPORT.md
+!README.md
+!ROADMAP.md
+!SETUP.md
+!TECHNICAL_INTROSPECTION.md
+!search_results.txt
+!gemini_models_list.txt
+!test_api_result.txt
+!test_gen_output.txt
