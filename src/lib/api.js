@@ -1,14 +1,17 @@
-/**
- * Centralized API utility.
- * Automatically attaches JWT token to all outgoing requests.
- */
+import toast from 'react-hot-toast';
 
-const API_BASE = '/api';
+// 1. Pull the Render backend URL from your .env, with a local fallback
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:8000';
+
+// Remove a trailing slash if it exists on the base URL to prevent double slashes (//api)
+const CLEAN_BACKEND_URL = BACKEND_URL.endsWith('/') ? BACKEND_URL.slice(0, -1) : BACKEND_URL;
+const API_BASE = `${CLEAN_BACKEND_URL}/api`;
 
 export const getToken = () => localStorage.getItem('courseforge_token');
 
-import toast from 'react-hot-toast';
-
+/**
+ * Core internal fetch wrapper with error handling and automatic JWT attachment.
+ */
 const apiFetch = async (endpoint, options = {}, isFormData = false) => {
     const token = getToken();
 
@@ -19,7 +22,11 @@ const apiFetch = async (endpoint, options = {}, isFormData = false) => {
         ...options.headers,
     };
 
-    const path = endpoint.startsWith(API_BASE) ? endpoint : `${API_BASE}${endpoint}`;
+    // Clean up slash formatting dynamically
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    
+    // Build the absolute pathway to your Render server
+    const path = endpoint.startsWith('http') ? endpoint : `${API_BASE}${cleanEndpoint}`;
     
     try {
         const res = await fetch(path, { ...options, headers });
@@ -55,7 +62,9 @@ const apiFetch = async (endpoint, options = {}, isFormData = false) => {
  */
 const apiFetchBlob = async (endpoint) => {
     const token = getToken();
-    const path = endpoint.startsWith(API_BASE) ? endpoint : `${API_BASE}${endpoint}`;
+    const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+    const path = endpoint.startsWith('http') ? endpoint : `${API_BASE}${cleanEndpoint}`;
+    
     const res = await fetch(path, {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
     });
@@ -99,6 +108,7 @@ export const authAPI = {
         const formData = new URLSearchParams();
         formData.append('username', email);
         formData.append('password', password);
+        
         return fetch(`${API_BASE}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -213,7 +223,7 @@ export const sandboxAPI = {
 };
 
 /**
- * Default export providing an axios-like interface
+ * Default export providing an intuitive axios-like helper object mapping
  */
 const api = {
     get: async (url, options) => {
